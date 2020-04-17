@@ -8,9 +8,8 @@ module.exports = {
 
     get: function (req, res) {
 
-      // console.log('we got here1');
-      // res.statusCode = 200;
-      var result = models.messages.get((err, results) => {
+      models.messages.get((err, results) => {
+        if (err) { /* do something */ }
         // handle err
         res.json(results);
       });
@@ -19,10 +18,15 @@ module.exports = {
     }, // a function which handles a get request for all messages
 
     post: function (req, res) {
-      var params = [req.body.text, req.body.userid, req.body.roomname ];
-      models.messages.post(params, (results) => {
-        console.log(results);
+      var params = [ req.body.text, req.body.username, req.body.roomname ];
+      models.messages.post(params, (err, results) => {
+        if (err) {
+          console.log('error at line 24');
+          res.end();
+        }
+        // console.log(params);
         res.json(results);
+
       });
 
     } // a function which handles posting a message to the database
@@ -31,7 +35,7 @@ module.exports = {
   users: {
     // Ditto as above
     get: function (req, res) {
-      models.users.get((results) => {
+      models.users.get((err, results) => {
         // handle err
         res.json(results);
       });
@@ -39,8 +43,9 @@ module.exports = {
 
     post: function (req, res) {
       var params = [req.body.username];
-      models.users.post( params, (results) => {
-        res.json(results);
+      models.users.post( params, (err, results) => {
+        res.sendStatus(201);
+        // res.json(results);
       });
     }
   }
