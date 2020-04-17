@@ -1,0 +1,37 @@
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';
+
+
+create table winners (
+  name TEXT,
+  hobby TEXT,
+  id INT,
+  PRIMARY KEY (id));
+
+
+
+
+CREATE TABLE pet (name VARCHAR(20), owner VARCHAR(20),
+  species VARCHAR(20), sex CHAR(1), birth DATE, death DATE);
+
+
+
+insert into winners (name, hobby, id) values ('austin', 'flies', 2);
+
+insert into winners values ('harry potter', 'weed', 7);
+
+
+UPDATE winners SET hobby = 'plays dnd' WHERE name = 'benjamin';
+
+UPDATE winners SET hobby = 'plays dnd' WHERE name = 'benjamin';
+
+UPDATE winners SET name = 'carlitos willis' WHERE name = 'carlitos';
+
+
+
+CREATE TABLE pets (name VARCHAR(20), owner VARCHAR(20),
+  species VARCHAR(20), sex CHAR(1));
+
+
+insert into pets values ('cashmere', 'carlitos', 'dauchsand', 'f',);
+insert into pets values ('charlie', 'carlitos', 'idk', 'm');
+insert into pets values ('Rey', 'austin', 'australian shephard', 'f');
