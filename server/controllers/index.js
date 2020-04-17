@@ -20,7 +20,7 @@ module.exports = {
 
     post: function (req, res) {
       var params = [req.body.text, req.body.userid, req.body.roomname ];
-      models.messages.post( (results) => {
+      models.messages.post(params, (results) => {
         console.log(results);
         res.json(results);
       });
